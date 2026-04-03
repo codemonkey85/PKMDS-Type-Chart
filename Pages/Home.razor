@@ -4,12 +4,15 @@
 
 <div class="tc-header">
     <h1>Pokémon Type Chart</h1>
-    <p class="tc-subtitle">Select a game, attacking type, and defending type(s) to see how effective the move will be.</p>
+    <p class="tc-subtitle">Select a game, attacking type, and defending type(s) to see how effective the move will
+        be.</p>
 </div>
 
 <div class="tc-card">
     <h2 class="tc-section-title">Game</h2>
-    <select class="tc-game-select" @onchange="OnGameChanged" value="@_selectedGameId">
+    <select class="tc-game-select"
+            @onchange="OnGameChanged"
+            value="@_selectedGameId">
         @foreach (var group in TypeChartService.GameGroups)
         {
             <optgroup label="@group.Name">
@@ -27,7 +30,9 @@
     <div class="tc-type-grid">
         @foreach (var type in ValidTypes)
         {
-            <button class="tc-type-btn @(type == _attackType ? "tc-type-selected" : "")"
+            <button class="tc-type-btn @(type == _attackType
+                                           ? "tc-type-selected"
+                                           : "")"
                     style="background-color: @TypeChartService.TypeColors[type]"
                     @onclick="() => SelectAttackType(type)">
                 @type
@@ -44,7 +49,11 @@
             <div class="tc-type-grid">
                 @foreach (var type in ValidTypes)
                 {
-                    <button class="tc-type-btn @(type == _defendType1 ? "tc-type-selected" : "") @(type == _defendType2 ? "tc-type-disabled" : "")"
+                    <button class="tc-type-btn @(type == _defendType1
+                                                   ? "tc-type-selected"
+                                                   : "") @(type == _defendType2
+                                                             ? "tc-type-disabled"
+                                                             : "")"
                             style="background-color: @TypeChartService.TypeColors[type]"
                             disabled="@(type == _defendType2)"
                             @onclick="() => SelectDefendType1(type)">
@@ -56,13 +65,19 @@
         <div class="tc-defend-col">
             <h3 class="tc-defend-label">Secondary <span class="tc-optional">(optional)</span></h3>
             <div class="tc-type-grid">
-                <button class="tc-type-btn tc-type-none @(_defendType2 == null ? "tc-type-selected" : "")"
+                <button class="tc-type-btn tc-type-none @(_defendType2 == null
+                                                            ? "tc-type-selected"
+                                                            : "")"
                         @onclick="() => _defendType2 = null">
                     None
                 </button>
                 @foreach (var type in ValidTypes)
                 {
-                    <button class="tc-type-btn @(type == _defendType2 ? "tc-type-selected" : "") @(type == _defendType1 ? "tc-type-disabled" : "")"
+                    <button class="tc-type-btn @(type == _defendType2
+                                                   ? "tc-type-selected"
+                                                   : "") @(type == _defendType1
+                                                             ? "tc-type-disabled"
+                                                             : "")"
                             style="background-color: @TypeChartService.TypeColors[type]"
                             disabled="@(type == _defendType1)"
                             @onclick="() => SelectDefendType2(type)">
@@ -87,48 +102,4 @@
         <div class="tc-result-label">@info.Label</div>
         <p class="tc-result-description">@GetDescription(_attackType.Value, defenderLabel, info)</p>
     </div>
-}
-
-@code {
-    private string _selectedGameId = "SV";
-    private MoveType? _attackType;
-    private MoveType? _defendType1;
-    private MoveType? _defendType2;
-
-    private TypeEra CurrentEra => TypeChartService.GetEra(_selectedGameId);
-    private IReadOnlyList<MoveType> ValidTypes => TypeChartService.GetValidTypes(CurrentEra);
-
-    private void OnGameChanged(ChangeEventArgs e)
-    {
-        _selectedGameId = e.Value?.ToString() ?? "SV";
-        var valid = ValidTypes;
-        if (_attackType.HasValue && !valid.Contains(_attackType.Value))
-            _attackType = null;
-        if (_defendType1.HasValue && !valid.Contains(_defendType1.Value))
-            _defendType1 = null;
-        if (_defendType2.HasValue && !valid.Contains(_defendType2.Value))
-            _defendType2 = null;
-    }
-
-    private void SelectAttackType(MoveType type)
-        => _attackType = (_attackType == type) ? null : type;
-
-    private void SelectDefendType1(MoveType type)
-        => _defendType1 = (_defendType1 == type) ? null : type;
-
-    private void SelectDefendType2(MoveType type)
-        => _defendType2 = (_defendType2 == type) ? null : type;
-
-    private static (string Multiplier, string Label, string Description, string CssClass) GetResultInfo(float eff) => eff switch
-    {
-        0f    => ("×0",  "No Effect",          "have no effect on",            "tc-result-immune"),
-        0.25f => ("×¼",  "Not Very Effective", "are not very effective against","tc-result-nve"),
-        0.5f  => ("×½",  "Not Very Effective", "are not very effective against","tc-result-nve"),
-        2f    => ("×2",  "Super Effective!",   "are super effective against",  "tc-result-se"),
-        4f    => ("×4",  "Super Effective!!",  "are extremely effective against","tc-result-4se"),
-        _     => ("×1",  "Normal",             "deal normal damage to",        "tc-result-normal"),
-    };
-
-    private static string GetDescription(MoveType attacker, string defenderLabel, (string Multiplier, string Label, string Description, string CssClass) info)
-        => $"{attacker}-type moves {info.Description} {defenderLabel}-type Pokémon.";
 }
