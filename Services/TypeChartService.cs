@@ -114,7 +114,7 @@ public static class TypeChartService
             new("SV", "Scarlet / Violet", TypeEra.Gen6Plus),
             new("ZA", "Legends: Z-A", TypeEra.Gen6Plus)
         ]),
-        new("Generation X", [
+        new("Other", [
             new("Champions", "Champions", TypeEra.Gen6Plus)
         ])
     ];
