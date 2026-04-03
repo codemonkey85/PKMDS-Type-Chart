@@ -99,6 +99,13 @@ html, body {
     background-color: #999 !important;
 }
 
+.tc-type-btn.tc-type-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
 /* ── Defending Types Layout ── */
 .tc-defend-row {
     display: flex;

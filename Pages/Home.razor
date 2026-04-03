@@ -44,8 +44,9 @@
             <div class="tc-type-grid">
                 @foreach (var type in ValidTypes)
                 {
-                    <button class="tc-type-btn @(type == _defendType1 ? "tc-type-selected" : "")"
+                    <button class="tc-type-btn @(type == _defendType1 ? "tc-type-selected" : "") @(type == _defendType2 ? "tc-type-disabled" : "")"
                             style="background-color: @TypeChartService.TypeColors[type]"
+                            disabled="@(type == _defendType2)"
                             @onclick="() => SelectDefendType1(type)">
                         @type
                     </button>
@@ -61,8 +62,9 @@
                 </button>
                 @foreach (var type in ValidTypes)
                 {
-                    <button class="tc-type-btn @(type == _defendType2 ? "tc-type-selected" : "")"
+                    <button class="tc-type-btn @(type == _defendType2 ? "tc-type-selected" : "") @(type == _defendType1 ? "tc-type-disabled" : "")"
                             style="background-color: @TypeChartService.TypeColors[type]"
+                            disabled="@(type == _defendType1)"
                             @onclick="() => SelectDefendType2(type)">
                         @type
                     </button>
