@@ -420,3 +420,6 @@ FodyWeavers.xsd
 .idea
 .claude/worktrees/
 .claude/settings.local.json
+
+# LibMan restored client libraries
+wwwroot/lib/

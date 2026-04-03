@@ -39,6 +39,12 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore PKMDS-Type-Chart.csproj
 
+      - name: Install libman CLI
+        run: dotnet tool install -g Microsoft.Web.LibraryManager.Cli
+
+      - name: Restore client libraries
+        run: libman restore
+
       - name: Compute version number
         id: version
         run: echo "VERSION=$(date -u '+%Y.%m.%d%H.%M%S')" >> $GITHUB_OUTPUT
