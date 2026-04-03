@@ -75,14 +75,18 @@ public static class TypeChartService
     public static readonly IReadOnlyList<GameGroup> GameGroups =
     [
         new("Generation I", [
-            new("RBY", "Red / Blue / Yellow", TypeEra.Gen1)
+            new("RBY", "Red / Blue / Yellow", TypeEra.Gen1),
+            new("Stadium", "Stadium", TypeEra.Gen1)
         ]),
         new("Generation II", [
-            new("GSC", "Gold / Silver / Crystal", TypeEra.Gen2to5)
+            new("GSC", "Gold / Silver / Crystal", TypeEra.Gen2to5),
+            new("Stadium2", "Stadium 2", TypeEra.Gen2to5)
         ]),
         new("Generation III", [
             new("RSE", "Ruby / Sapphire / Emerald", TypeEra.Gen2to5),
-            new("FRLG", "FireRed / LeafGreen", TypeEra.Gen2to5)
+            new("FRLG", "FireRed / LeafGreen", TypeEra.Gen2to5),
+            new("Colo", "Colosseum", TypeEra.Gen2to5),
+            new("XD", "XD: Gale of Darkness", TypeEra.Gen2to5)
         ]),
         new("Generation IV", [
             new("DPPt", "Diamond / Pearl / Platinum", TypeEra.Gen2to5),
@@ -107,7 +111,11 @@ public static class TypeChartService
             new("PLA", "Legends: Arceus", TypeEra.Gen6Plus)
         ]),
         new("Generation IX", [
-            new("SV", "Scarlet / Violet", TypeEra.Gen6Plus)
+            new("SV", "Scarlet / Violet", TypeEra.Gen6Plus),
+            new("ZA", "Legends: Z-A", TypeEra.Gen6Plus)
+        ]),
+        new("Generation X", [
+            new("Champions", "Champions", TypeEra.Gen6Plus)
         ])
     ];
 
