@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11620.152 stable
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PKMDS-Type-Chart", "PKMDS-Type-Chart.csproj", "{EE7ADC1E-4270-47E5-9A55-31B23E558B9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE7ADC1E-4270-47E5-9A55-31B23E558B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE7ADC1E-4270-47E5-9A55-31B23E558B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE7ADC1E-4270-47E5-9A55-31B23E558B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE7ADC1E-4270-47E5-9A55-31B23E558B9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0626EDB-DF34-480A-84D7-EEECD2D9A6AB}
+	EndGlobalSection
+EndGlobal
