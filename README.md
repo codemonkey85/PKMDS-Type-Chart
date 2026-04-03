@@ -1,2 +1,4 @@
 # PKMDS-Type-Chart
-An interactive, searchable type chart for Pokémon games
+An interactive type chart for Pokémon games
+
+https://codemonkey85.github.io/PKMDS-Type-Chart/
